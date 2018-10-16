@@ -15,7 +15,7 @@ epicsEnvSet("EVRSEQ_CMD_TOP", "$(E3_MODULES)/e3-evrseq/ics-evr-seq/iocBoot/iocev
 epicsEnvSet("EVRSEQ_DB_TOP", "$(E3_MODULES)/e3-evrseq/ics-evr-seq/evrseqcalcApp/Db")
 
 mrmEvrSetupPCI("$(EVR)", $(PCI_SLOT))
-dbLoadRecords("evr-pcie-300dc-ess.db","EVR=$(EVR),SYS=$(SYS),D=$(DEVICE),FEVT=88.0519,PINITSEQ=0")
+dbLoadRecords("evr-pcie-300dc-ess.db","EVR=$(EVR),SYS=$(SYS),D=$(DEVICE),FEVT=88.0525,PINITSEQ=0")
 
 dbLoadTemplate("/opt/epics/modules/esschic/nicklasholmberg2/db/esschicTimestampBuffer.substitutions", "CHIC_SYS=$(CHIC_SYS), CHOP_DRV=$(CHOP_DRV), SYS=$(SYS), DEVICE=$(CHIC_DEV):")
 
@@ -29,7 +29,11 @@ iocInit()
 
 # Set delay compensation target to 70. This is required even when delay compensation
 # is disabled to avoid occasionally corrupting timestamps.
-dbpf $(SYS)-$(DEVICE):DC-Tgt-SP 70
+#dbpf $(SYS)-$(DEVICE):DC-Tgt-SP 70
+dbpf $(SYS)-$(DEVICE):DC-Tgt-SP 100
+
+# Set the frequency that the EVR expects from the EVG for the event clock 
+dbpf $(SYS)-$(DEVICE):Time-Clock-SP 88.0525
 
 ######### INPUTS #########
 
