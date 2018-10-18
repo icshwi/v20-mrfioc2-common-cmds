@@ -9,7 +9,7 @@ require evrseq,master
 
 epicsEnvSet("TOP", "$(E3_CMD_TOP)")
 epicsEnvSet("RECSYNC_CMD_TOP", "$(TOP)/../../e3/e3-recsync/cmds")
-iocshLoad "$(RECSYNC_CMD_TOP)/recsync.cmd"
+iocshLoad("$(RECSYNC_CMD_TOP)/recsync.cmd", "IOC=$(SYS)-$(DEVICE)")
 
 epicsEnvSet("EVRSEQ_CMD_TOP", "$(E3_MODULES)/e3-evrseq/ics-evr-seq/iocBoot/iocevrseqcalc")
 epicsEnvSet("EVRSEQ_DB_TOP", "$(E3_MODULES)/e3-evrseq/ics-evr-seq/evrseqcalcApp/Db")
