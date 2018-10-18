@@ -3,7 +3,7 @@ require recsync,1.3.0
 require evrseq,master
 
 # These environment variables are set by the calling script
-# epicsEnvSet("SYS", "VIP-EVR-2")
+# epicsEnvSet("SYS", "VIP-EVR-1")
 # epicsEnvSet("PCI_SLOT", "1:0.0")
 # epicsEnvSet("DEVICE", "evr:2")
 
