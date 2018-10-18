@@ -3,7 +3,7 @@ require recsync,1.3.0
 require evrseq,master
 
 # These environment variables are set by the calling script
-# epicsEnvSet("SYS", "VIP-EVR-2")
+# epicsEnvSet("SYS", "VIP-EVR-1")
 # epicsEnvSet("PCI_SLOT", "1:0.0")
 # epicsEnvSet("DEVICE", "evr:1")
 
@@ -44,7 +44,7 @@ dbpf $(SYS)-$(DEVICE):OutFPUV00-Src-SP 61
 dbpf $(SYS)-$(DEVICE):In0-Trig-Ext-Sel "Edge"
 dbpf $(SYS)-$(DEVICE):In0-Code-Ext-SP 10
 dbpf $(SYS)-$(DEVICE):EvtA-SP.OUT "@OBJ=$(EVR),Code=10"
-#dbpf $(SYS)-$(DEVICE):EvtA-SP.VAL 10 # Value does not seem to matter
+dbpf $(SYS)-$(DEVICE):EvtA-SP.VAL 10
 
 # Set up of UnivIO 1 as Input. Generate Code 11 locally on rising edge.
 dbpf $(SYS)-$(DEVICE):In1-Lvl-Sel "Active High"
@@ -53,7 +53,7 @@ dbpf $(SYS)-$(DEVICE):OutFPUV01-Src-SP 61
 dbpf $(SYS)-$(DEVICE):In1-Trig-Ext-Sel "Edge"
 dbpf $(SYS)-$(DEVICE):In1-Code-Ext-SP 11
 dbpf $(SYS)-$(DEVICE):EvtB-SP.OUT "@OBJ=$(EVR),Code=11"
-#dbpf $(SYS)-$(DEVICE):EvtB-SP.VAL 11 # Value does not seem to matter
+dbpf $(SYS)-$(DEVICE):EvtB-SP.VAL 11
 
 ######### OUTPUTS #########
 dbpf $(SYS)-$(DEVICE):DlyGen1-Evt-Trig0-SP 14
