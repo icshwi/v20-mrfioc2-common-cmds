@@ -1,6 +1,8 @@
 require mrfioc2,2.2.0-rc2
 require recsync,1.3.0
-require evrseq,master
+# require evrseq,master
+require evrseq,timestamptest
+require pva2pva,1.0.0
 
 # These environment variables are set by the calling script
 # epicsEnvSet("SYS", "VIP-EVR-1")
@@ -20,7 +22,7 @@ dbLoadRecords("evr-pcie-300dc-ess.db","EVR=$(EVR),SYS=$(SYS),D=$(DEVICE),FEVT=88
 dbLoadTemplate("/opt/epics/modules/esschic/nicklasholmberg2/db/esschicTimestampBuffer.substitutions", "CHIC_SYS=$(CHIC_SYS), CHOP_DRV=$(CHOP_DRV), SYS=$(SYS), DEVICE=$(CHIC_DEV):")
 
 # Load the sequencer configuration script
-iocshLoad("$(EVRSEQ_CMD_TOP)/evrseq.cmd", "DEV1=$(CHOP_DRV)01:,DEV2=$(CHOP_DRV)02:,DEV3=$(CHOP_DRV)03:,DEV4=$(CHOP_DRV)04:,SYS_EVRSEQ=$(CHIC_SYS),EVR_EVRSEQ=$(CHIC_DEV):")
+iocshLoad("$(EVRSEQ_CMD_TOP)/evrseq.cmd", "DEV1=$(CHOP_DRV)01:, DEV2=$(CHOP_DRV)02:, DEV3=$(CHOP_DRV)03:, DEV4=$(CHOP_DRV)04:, SYS_EVRSEQ=$(CHIC_SYS), EVR_EVRSEQ=$(CHIC_DEV):, NCG_SYS=$(NCG_SYS), NCG_DRV=$(NCG_DRV)")
 
 # The amount of time which the EVR will wait for the 1PPS event before going into error state.
 var(evrMrmTimeNSOverflowThreshold, 1000000)
