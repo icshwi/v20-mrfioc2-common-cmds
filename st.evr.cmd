@@ -1,7 +1,7 @@
-require mrfioc2,2.2.0-rc2
+require mrfioc2,2.2.0-rc4
 require recsync,1.3.0
 # require evrseq,master
-require evrseq,timestamptest
+require evrseq,0.1.0
 require pva2pva,1.0.0
 
 # These environment variables are set by the calling script
@@ -13,8 +13,8 @@ epicsEnvSet("TOP", "$(E3_CMD_TOP)")
 epicsEnvSet("RECSYNC_CMD_TOP", "$(TOP)/../../e3/e3-recsync/cmds")
 iocshLoad("$(RECSYNC_CMD_TOP)/recsync.cmd", "IOC=$(SYS)-$(DEVICE)")
 
-epicsEnvSet("EVRSEQ_CMD_TOP", "$(E3_MODULES)/e3-evrseq/ics-evr-seq/iocBoot/iocevrseqcalc")
-epicsEnvSet("EVRSEQ_DB_TOP", "$(E3_MODULES)/e3-evrseq/ics-evr-seq/evrseqcalcApp/Db")
+epicsEnvSet("EVRSEQ_CMD_TOP", "$(E3_MODULES)/e3-evrseq/ics-evr-seq-dev/iocBoot/iocevrseqcalc")
+epicsEnvSet("EVRSEQ_DB_TOP", "$(E3_MODULES)/e3-evrseq/ics-evr-seq-dev/evrseqcalcApp/Db")
 
 mrmEvrSetupPCI("$(EVR)", $(PCI_SLOT))
 dbLoadRecords("evr-pcie-300dc-ess.db","EVR=$(EVR),SYS=$(SYS),D=$(DEVICE),FEVT=88.0525,PINITSEQ=0")
